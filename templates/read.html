@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read messages</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" />
+      </a>
+
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('message') }}">Send message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('read_messages') }}">Read</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container mt-3">
+  <h1>Збережені повідомлення</h1>
+
+  {% if messages %}
+    <ul class="list-group">
+      {% for timestamp, item in messages.items() %}
+        <li class="list-group-item">
+          <strong>{{ timestamp }}</strong><br>
+          <b>{{ item.username }}</b>: {{ item.message }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Повідомлень ще немає.</p>
+  {% endif %}
+</div>
+
+</body>
+</html>
