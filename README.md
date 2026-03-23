@@ -59,7 +59,7 @@ UMT-pythonweb-hw-03/
 
 Встановлення та запуск
 1. Клонування репозиторію
-git clone https://github.com/your-username/UMT-pythonweb-hw-03.git
+git clone https://github.com/saltykov-neovwrsity/UMT-pythonweb-hw-03.git
 2. Встановлення залежностей (через uv)
 uv sync
 3. Запуск застосунку
